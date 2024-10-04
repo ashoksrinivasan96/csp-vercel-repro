@@ -39,7 +39,7 @@ export function middleware(request: NextRequest) {
     },
   });
   response.headers.set(
-    "Content-Security-Policy-Report-Only",
+    "Content-Security-Policy",
     contentSecurityPolicyHeaderValue
   );
 
