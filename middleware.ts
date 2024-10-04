@@ -7,7 +7,7 @@ export function middleware(request: NextRequest) {
     script-src 'self' https://assets.pinterest.com 'nonce-${nonce}';
     script-src-elem 'self' https://assets.pinterest.com 'nonce-${nonce}';
     style-src 'self' https://assets.pinterest.com 'nonce-${nonce}';
-    img-src 'self' blob: data:;
+    img-src 'self' https://placehold.co blob: data:;
     font-src 'self';
     object-src 'none';
     base-uri 'self';
