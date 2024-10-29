@@ -4,11 +4,12 @@ export function middleware(request: NextRequest) {
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
   const cspHeader = `
     default-src 'self';
-    script-src 'self' https://assets.pinterest.com 'nonce-${nonce}';
+    script-src 'self' https://assets.pinterest.com 'nonce-${nonce}' 'strict-dynamic';
     script-src-elem 'self' https://assets.pinterest.com 'nonce-${nonce}';
-    style-src 'self' https://assets.pinterest.com 'nonce-${nonce}';
-    img-src 'self' https://placehold.co blob: data:;
-    font-src 'self';
+    style-src 'self' https://assets.pinterest.com 'nonce-${nonce}' 'unsafe-inline';
+    img-src 'self' https://placehold.co https://assets.pinterest.com blob: data:;
+    font-src 'self' https://assets.pinterest.com;
+    connect-src 'self' https://assets.pinterest.com;
     object-src 'none';
     base-uri 'self';
     form-action 'self';
