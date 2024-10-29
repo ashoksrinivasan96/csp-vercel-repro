@@ -3,18 +3,18 @@ import { NextRequest, NextResponse } from "next/server";
 export function middleware(request: NextRequest) {
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
   const cspHeader = `
-    default-src 'self';
-    script-src 'self' https://assets.pinterest.com 'nonce-${nonce}' 'strict-dynamic';
-    script-src-elem 'self' https://assets.pinterest.com 'nonce-${nonce}';
-    style-src 'self' https://assets.pinterest.com 'nonce-${nonce}' 'unsafe-inline';
-    img-src 'self' https://placehold.co https://assets.pinterest.com blob: data:;
-    font-src 'self' https://assets.pinterest.com;
-    connect-src 'self' https://assets.pinterest.com;
-    object-src 'none';
-    base-uri 'self';
-    form-action 'self';
-    frame-ancestors 'none';
-    upgrade-insecure-requests;
+  default-src 'self';
+  script-src 'self' https://assets.pinterest.com https://vercel.live 'nonce-${nonce}' 'strict-dynamic';
+  script-src-elem 'self' https://assets.pinterest.com https://vercel.live 'nonce-${nonce}';
+  style-src 'self' https://assets.pinterest.com 'nonce-${nonce}' 'unsafe-inline';
+  img-src 'self' https://placehold.co https://assets.pinterest.com https://log.pinterest.com blob: data:;
+  font-src 'self' https://assets.pinterest.com;
+  connect-src 'self' https://assets.pinterest.com;
+  object-src 'none';
+  base-uri 'self';
+  form-action 'self';
+  frame-ancestors 'none';
+  upgrade-insecure-requests;
 `;
   // Replace newline characters and spaces
   const contentSecurityPolicyHeaderValue = cspHeader
